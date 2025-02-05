@@ -126,44 +126,44 @@ def results_window(stats, df, histogram_data):
     ]
 
     tab_layout = [
-        [
-            sg.TabGroup([
-                [
-                    sg.Tab('Datos', [
-                        [sg.Text('Lecturas de Voltaje', font=FONT_SUBTITLE, pad=(0, 10))],
-                        [sg.Table(
-                            values=data_table,
-                            headings=headers_table,
-                            auto_size_columns=False,
-                            col_widths=[8, 10, 12, 12],
-                            justification='right',
-                            num_rows=15,
-                            font=FONT_BODY,
-                            expand_x=True
-                        )]
-                    ]),
-                    sg.Tab('Estadísticas', [
-                        [sg.Column(stats_layout, scrollable=True, vertical_scroll_only=True, size=(600, 300))]
-                    ]),
-                    sg.Tab('Gráfica', [
-                        [sg.Text('Distribución de Voltajes', font=FONT_SUBTITLE, pad=(0, 10))],
-                        [sg.Image(data=histogram_data, key='-HIST-', expand_x=True)]
-                    ])
-                ]
-            ], font=FONT_BODY)
-        ],
-        [
-            sg.Push(),
-            sg.Button('Generar Reporte', font=FONT_BODY),
-            sg.Button('Cerrar', font=FONT_BODY),
-            sg.Push()
-        ]
+        sg.TabGroup([
+            [
+                sg.Tab('Datos', [
+                    [sg.Text('Lecturas de Voltaje', font=FONT_SUBTITLE, pad=(0, 10))],
+                    [sg.Table(
+                        values=data_table,
+                        headings=headers_table,
+                        auto_size_columns=False,
+                        col_widths=[8, 10, 12, 12],
+                        justification='right',
+                        num_rows=15,
+                        font=FONT_BODY,
+                        expand_x=True
+                    )]
+                ]),
+                sg.Tab('Estadísticas', [
+                    [sg.Column(stats_layout, scrollable=True, vertical_scroll_only=True, size=(600, 300))]
+                ]),
+                sg.Tab('Gráfica', [
+                    [sg.Text('Distribución de Voltajes', font=FONT_SUBTITLE, pad=(0, 10))],
+                    [sg.Image(data=histogram_data, key='-HIST-', expand_x=True)]
+                ])
+            ]
+        ], font=FONT_BODY)
+    ]
+
+    buttons_row = [
+        sg.Push(),
+        sg.Button('Generar Reporte', font=FONT_BODY),
+        sg.Button('Cerrar', font=FONT_BODY),
+        sg.Push()
     ]
 
     layout = [
         [sg.Text('Resultados del Análisis', font=FONT_TITLE, pad=(0, 10))],
         [sg.HorizontalSeparator()],
-        [sg.Column(tab_layout, pad=(0, 10), expand_x=True, expand_y=True)],
+        buttons_row,
+        [sg.Column([tab_layout], pad=(0, 10), expand_x=True, expand_y=True)],
         [sg.Text('Valor Nominal: 127.00 V', font=FONT_BODY, pad=(10, 0))]
     ]
 
